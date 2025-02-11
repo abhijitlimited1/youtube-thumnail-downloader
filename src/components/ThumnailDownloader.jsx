@@ -22,6 +22,18 @@ const ThumbnailDownloader = () => {
     return match ? match[1] : null;
   };
 
+  // 🔥 Fix: Force Download
+  const downloadThumbnail = () => {
+    if (!thumbnailUrl) return;
+
+    const a = document.createElement("a");
+    a.href = thumbnailUrl;
+    a.download = "youtube-thumbnail.jpg"; // Forces browser to download
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   return (
     <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg text-center">
       <h1 className="text-2xl font-bold mb-4">YouTube Thumbnail Downloader</h1>
@@ -34,7 +46,7 @@ const ThumbnailDownloader = () => {
       />
       <button
         onClick={getThumbnail}
-        className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 cursor-pointer"
+        className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400"
         disabled={!videoUrl}
       >
         Get Thumbnail
@@ -47,13 +59,12 @@ const ThumbnailDownloader = () => {
             alt="YouTube Thumbnail"
             className="w-full rounded-lg"
           />
-          <a
-            href={thumbnailUrl}
-            download="youtube-thumbnail.jpg"
-            className="bg-green-500 text-white px-4 py-2 rounded mt-4 inline-block"
+          <button
+            onClick={downloadThumbnail}
+            className="bg-green-500 text-white px-4 py-2 rounded mt-4"
           >
             Download Thumbnail
-          </a>
+          </button>
         </div>
       )}
     </div>
