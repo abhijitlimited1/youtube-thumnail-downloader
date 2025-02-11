@@ -46,7 +46,7 @@ const ThumbnailDownloader = () => {
       />
       <button
         onClick={getThumbnail}
-        className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400"
+        className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 cursor-pointer"
         disabled={!videoUrl}
       >
         Get Thumbnail
@@ -61,7 +61,7 @@ const ThumbnailDownloader = () => {
           />
           <button
             onClick={downloadThumbnail}
-            className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+            className="bg-green-500 text-white px-4 py-2 rounded mt-4 cursor-pointer"
           >
             Download Thumbnail
           </button>
